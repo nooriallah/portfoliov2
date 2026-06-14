@@ -10,23 +10,23 @@ export default function Skills() {
       id="skills"
       eyebrow={t.sections.skills.eyebrow}
       title={t.sections.skills.title}
-      className="bg-white/[0.02]"
+      className="bg-section"
     >
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillsMeta.map((s, i) => (
           <Reveal key={s.id} delay={i * 80}>
-            <div className="h-full p-6 rounded-2xl border border-white/10 bg-slate-900/40">
+            <div className="h-full p-6 rounded-2xl border border-line bg-surface">
               <div className="flex items-center gap-3 mb-4">
-                <span className="grid place-items-center w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400">
+                <span className="grid place-items-center w-10 h-10 rounded-lg bg-accent/10 text-accent">
                   <s.icon size={20} />
                 </span>
-                <h3 className="font-bold text-white">{t.skills[s.id]}</h3>
+                <h3 className="font-bold text-heading">{t.skills[s.id]}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {s.items.map((it) => (
                   <span
                     key={it}
-                    className="text-sm px-3 py-1 rounded-lg bg-white/5 text-slate-300 border border-white/5"
+                    className="text-sm px-3 py-1 rounded-lg bg-chip text-body border border-line-soft"
                   >
                     {it}
                   </span>

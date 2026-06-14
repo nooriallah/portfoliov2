@@ -15,7 +15,7 @@ export default function App() {
   const { scrolled, active } = useScrollSpy();
 
   return (
-    <div className="bg-slate-950 text-slate-300 font-sans antialiased">
+    <div className="min-h-screen bg-bg text-body font-sans antialiased">
       <Navbar scrolled={scrolled} active={active} />
       <Hero />
       <About />

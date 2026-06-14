@@ -2,6 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Apply saved/system theme before paint to avoid a flash
+      (function () {
+        try {
+          var s = localStorage.getItem("theme");
+          var dark = s
+            ? s === "dark"
+            : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
     <link
       rel="icon"
       type="image/webp"

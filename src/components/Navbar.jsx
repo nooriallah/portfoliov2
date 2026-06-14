@@ -4,6 +4,7 @@ import { NAV_IDS } from "../data/content.js";
 import { scrollToId } from "../utils/scroll.js";
 import { useLang } from "./i18n/LanguageProvider.jsx";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 export default function Navbar({ scrolled, active }) {
   const { t } = useLang();
@@ -15,17 +16,18 @@ export default function Navbar({ scrolled, active }) {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "bg-slate-950/80 backdrop-blur border-b border-white/5 py-3" : "py-5"}`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "bg-bg/80 backdrop-blur border-b border-line-soft py-3" : "py-5"}`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <button
           onClick={() => go("home")}
-          className="flex items-center gap-2 text-white font-bold text-lg"
+          className="flex items-center gap-2 text-heading font-bold text-lg"
         >
           <span className="grid place-items-center w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
             N
           </span>
-          Nooriallah
+          {/* Show only the name here not surname */}
+          { (t.hero.name).split(" ")[0] }
         </button>
 
         <nav className="hidden md:flex items-center gap-1">
@@ -33,7 +35,7 @@ export default function Navbar({ scrolled, active }) {
             <button
               key={id}
               onClick={() => go(id)}
-              className={`px-3 py-2 text-sm rounded-md transition-colors ${active === id ? "text-blue-400" : "text-slate-400 hover:text-white"}`}
+              className={`px-3 py-2 text-sm rounded-md transition-colors ${active === id ? "text-accent" : "text-muted hover:text-heading"}`}
             >
               {t.nav[id]}
             </button>
@@ -41,6 +43,7 @@ export default function Navbar({ scrolled, active }) {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <LanguageSwitcher />
           <button
             onClick={() => go("contact")}
@@ -50,7 +53,7 @@ export default function Navbar({ scrolled, active }) {
           </button>
           <button
             onClick={() => setOpen((o) => !o)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-heading p-2"
           >
             {open ? <X /> : <Menu />}
           </button>
@@ -58,12 +61,12 @@ export default function Navbar({ scrolled, active }) {
       </div>
 
       {open && (
-        <nav className="md:hidden bg-slate-950/95 backdrop-blur border-t border-white/5 px-6 py-4 flex flex-col gap-1">
+        <nav className="md:hidden bg-bg/95 backdrop-blur border-t border-line-soft px-6 py-4 flex flex-col gap-1">
           {NAV_IDS.map((id) => (
             <button
               key={id}
               onClick={() => go(id)}
-              className="text-start px-2 py-2 text-slate-300 hover:text-blue-400"
+              className="text-start px-2 py-2 text-body hover:text-accent"
             >
               {t.nav[id]}
             </button>

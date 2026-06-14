@@ -1,11 +1,77 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode: `dark:` and the .dark token overrides below
+   activate when <html> has the "dark" class. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- Semantic color tokens (LIGHT is the default) ---- */
+:root {
+  --bg: #ffffff; /* page background */
+  --section: #f8fafc; /* alternating section background */
+  --surface: #ffffff; /* card background */
+  --surface-strong: #f8fafc; /* card hover */
+  --card: #ffffff; /* solid surfaces (dropdowns) */
+  --chip: #f1f5f9; /* skill chips / subtle fills */
+  --line: #e2e8f0; /* standard borders */
+  --line-soft: #f1f5f9; /* subtle dividers */
+  --heading: #0f172a; /* headings */
+  --body: #334155; /* body text */
+  --muted: #64748b; /* muted text */
+  --faint: #94a3b8; /* faint text / icons */
+  --accent: #2563eb; /* blue accent */
+}
+
+/* ---- Dark overrides ---- */
+.dark {
+  --bg: #020617;
+  --section: rgba(255, 255, 255, 0.02);
+  --surface: rgba(15, 23, 42, 0.4);
+  --surface-strong: rgba(15, 23, 42, 0.7);
+  --card: #0f172a;
+  --chip: rgba(255, 255, 255, 0.06);
+  --line: rgba(255, 255, 255, 0.1);
+  --line-soft: rgba(255, 255, 255, 0.06);
+  --heading: #ffffff;
+  --body: #cbd5e1;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --accent: #60a5fa;
+}
+
+/* ---- Expose tokens as Tailwind color utilities (bg-bg, text-heading, ...) ---- */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-section: var(--section);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-card: var(--card);
+  --color-chip: var(--chip);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-heading: var(--heading);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  background: var(--bg);
+  color: var(--body);
+}
+
+/* Smooth the theme switch */
+body,
+body * {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.2s ease;
 }
 
 /* Use a readable Arabic-script font when RTL is active */

@@ -1,5 +1,5 @@
 import { ChevronUp } from "lucide-react";
-import { scrollToId } from "../uitls/scroll";
+import { scrollToId } from "../utils/scroll";
 
 export default function ScrollTop({ show }) {
   if (!show) return null;

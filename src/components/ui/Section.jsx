@@ -13,8 +13,8 @@ export default function Section({
         {eyebrow && (
           <Reveal>
             <div className="flex items-center gap-3 mb-3">
-              <span className="h-px w-8 bg-blue-500" />
-              <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">
+              <span className="h-px w-8 bg-accent" />
+              <span className="text-accent text-sm font-semibold tracking-widest uppercase">
                 {eyebrow}
               </span>
             </div>
@@ -22,7 +22,7 @@ export default function Section({
         )}
         {title && (
           <Reveal delay={80}>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-heading mb-12">
               {title}
             </h2>
           </Reveal>

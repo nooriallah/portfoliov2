@@ -11,27 +11,29 @@ export default function Reviews() {
       id="reviews"
       eyebrow={t.sections.reviews.eyebrow}
       title={t.sections.reviews.title}
-      className="bg-white/[0.02]"
+      className="bg-section"
     >
       <div className="grid md:grid-cols-3 gap-6">
         {reviewMeta.map((m, i) => {
           const r = t.reviews[i];
           return (
             <Reveal key={i} delay={i * 100}>
-              <div className="h-full p-6 rounded-2xl border border-white/10 bg-slate-900/40 flex flex-col">
-                <Quote size={28} className="text-blue-500/40 mb-3" />
-                <p className="text-sm text-slate-300 leading-relaxed flex-1">
+              <div className="h-full p-6 rounded-2xl border border-line bg-surface flex flex-col">
+                <Quote size={28} className="text-accent/40 mb-3" />
+                <p className="text-sm text-body leading-relaxed flex-1">
                   {r.text}
                 </p>
-                <div className="flex items-center gap-3 mt-5 pt-5 border-t border-white/5">
+                <div className="flex items-center gap-3 mt-5 pt-5 border-t border-line-soft">
                   <img
                     src={m.img}
                     alt={m.name}
                     className="w-11 h-11 rounded-full object-cover"
                   />
                   <div>
-                    <p className="text-white font-semibold text-sm">{m.name}</p>
-                    <p className="text-xs text-slate-500">{r.role}</p>
+                    <p className="text-heading font-semibold text-sm">
+                      {m.name}
+                    </p>
+                    <p className="text-xs text-faint">{r.role}</p>
                   </div>
                 </div>
               </div>

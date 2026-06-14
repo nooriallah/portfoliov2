@@ -16,14 +16,12 @@ export default function Services() {
           const txt = t.services[s.id];
           return (
             <Reveal key={s.id} delay={i * 80}>
-              <div className="group h-full p-6 rounded-2xl border border-white/10 bg-slate-900/40 hover:-translate-y-1 hover:border-blue-500/50 transition-all">
-                <span className="grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 text-blue-400 mb-4">
+              <div className="group h-full p-6 rounded-2xl border border-line bg-surface hover:-translate-y-1 hover:border-accent/50 transition-all">
+                <span className="grid place-items-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 text-accent mb-4">
                   <s.icon size={22} />
                 </span>
-                <h3 className="font-bold text-white mb-2">{txt.title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  {txt.desc}
-                </p>
+                <h3 className="font-bold text-heading mb-2">{txt.title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{txt.desc}</p>
               </div>
             </Reveal>
           );

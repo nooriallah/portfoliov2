@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Download, ArrowRight } from "lucide-react";
 import Reveal from "./ui/Reveal.jsx";
 import { IMG, socials } from "../data/content.js";
-import { scroll } from "./utils/scroll.js";
+import { scrollToId } from "../utils/scroll.js";
 import { useLang } from "./i18n/LanguageProvider.jsx";
 
 export default function Hero() {
@@ -31,24 +31,24 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div>
           <Reveal>
-            <p className="text-blue-400 font-medium mb-3">{t.hero.greeting}</p>
+            <p className="text-accent font-medium mb-3">{t.hero.greeting}</p>
           </Reveal>
           <Reveal delay={100}>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-heading leading-tight">
               {t.hero.name}
             </h1>
           </Reveal>
           <Reveal delay={200}>
-            <p className="mt-4 text-xl md:text-2xl font-medium">
+            <p className="mt-4 text-xl md:text-2xl font-medium text-body">
               {pre}
-              <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
                 {roles[role % roles.length]}
               </span>
               {post}
             </p>
           </Reveal>
           <Reveal delay={300}>
-            <p className="mt-5 max-w-md text-slate-400 leading-relaxed">
+            <p className="mt-5 max-w-md text-muted leading-relaxed">
               {t.hero.tagline}
             </p>
           </Reveal>
@@ -64,7 +64,7 @@ export default function Hero() {
               </a>
               <button
                 onClick={() => scrollToId("work")}
-                className="inline-flex items-center gap-2 px-5 py-3 font-semibold text-white rounded-lg border border-white/15 hover:bg-white/5 transition"
+                className="inline-flex items-center gap-2 px-5 py-3 font-semibold text-heading rounded-lg border border-line hover:bg-chip transition"
               >
                 {t.ui.viewWork}
               </button>
@@ -78,7 +78,7 @@ export default function Hero() {
                   href={s.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="grid place-items-center w-10 h-10 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:border-blue-500 transition"
+                  className="grid place-items-center w-10 h-10 rounded-lg border border-line text-muted hover:text-heading hover:border-accent transition"
                 >
                   <s.icon size={18} />
                 </a>
@@ -92,7 +92,7 @@ export default function Hero() {
             <img
               src={IMG.hero}
               alt={t.hero.name}
-              className="relative w-72 md:w-80 rounded-3xl border border-white/10 object-cover"
+              className="relative w-72 md:w-80 rounded-3xl border border-line object-cover"
             />
           </div>
         </Reveal>

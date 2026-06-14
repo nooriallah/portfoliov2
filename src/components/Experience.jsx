@@ -19,19 +19,19 @@ export default function Experience() {
         {columns.map(([heading, list]) => (
           <div key={heading}>
             <Reveal>
-              <h3 className="text-xl font-bold text-white mb-6">{heading}</h3>
+              <h3 className="text-xl font-bold text-heading mb-6">{heading}</h3>
             </Reveal>
-            <div className="relative ps-6 border-s border-white/10 space-y-8">
+            <div className="relative ps-6 border-s border-line space-y-8">
               {list.map((item, i) => (
                 <Reveal key={i} delay={i * 100}>
                   <div className="relative">
-                    <span className="absolute -start-[27px] top-1 w-3 h-3 rounded-full bg-blue-500 ring-4 ring-blue-500/20" />
-                    <span className="text-xs font-semibold text-blue-400">
+                    <span className="absolute -start-[27px] top-1 w-3 h-3 rounded-full bg-accent ring-4 ring-accent/20" />
+                    <span className="text-xs font-semibold text-accent">
                       {item.year}
                     </span>
-                    <h4 className="text-white font-bold mt-1">{item.title}</h4>
-                    <p className="text-sm text-slate-500">{item.place}</p>
-                    <p className="text-sm text-slate-400 mt-1 leading-relaxed">
+                    <h4 className="text-heading font-bold mt-1">{item.title}</h4>
+                    <p className="text-sm text-faint">{item.place}</p>
+                    <p className="text-sm text-muted mt-1 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

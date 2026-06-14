@@ -1,37 +1,57 @@
 import { ExternalLink } from "lucide-react";
 import Section from "./ui/Section.jsx";
 import Reveal from "./ui/Reveal.jsx";
+import { workMeta } from "../data/content.js";
 import { useLang } from "./i18n/LanguageProvider.jsx";
 
 export default function Work() {
   const { t } = useLang();
+
   return (
     <Section
       id="work"
       eyebrow={t.sections.work.eyebrow}
       title={t.sections.work.title}
-      className="bg-white/[0.02]"
+      className="bg-section"
     >
       <div className="grid sm:grid-cols-2 gap-6">
-        {t.work.map((p, i) => (
-          <Reveal key={i} delay={i * 90}>
-            <div className="group h-full p-6 rounded-2xl border border-white/10 bg-slate-900/40 hover:border-blue-500/50 hover:bg-slate-900/70 transition-all">
+        {workMeta.map((m, i) => {
+          const p = t.work[i];
+          const card = (
+            <div className="group h-full p-6 rounded-2xl border border-line bg-surface hover:border-accent/50 hover:bg-surface-strong transition-all">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400">
-                  {p.tag}
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-accent/10 text-accent">
+                  {m.tag}
                 </span>
                 <ExternalLink
                   size={18}
-                  className="text-slate-600 group-hover:text-blue-400 transition"
+                  className={`transition ${m.link ? "text-faint group-hover:text-accent" : "text-line"}`}
                 />
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">{p.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">{p.desc}</p>
+              <h3 className="text-lg font-bold text-heading mb-2">{p.title}</h3>
+              <p className="text-sm text-muted leading-relaxed">{p.desc}</p>
             </div>
-          </Reveal>
-        ))}
+          );
+
+          return (
+            <Reveal key={i} delay={i * 90}>
+              {m.link ? (
+                <a
+                  href={m.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block h-full"
+                >
+                  {card}
+                </a>
+              ) : (
+                card
+              )}
+            </Reveal>
+          );
+        })}
       </div>
-      <p className="mt-6 text-sm text-slate-500">{t.workNote}</p>
+      <p className="mt-6 text-sm text-faint">{t.workNote}</p>
     </Section>
   );
 }

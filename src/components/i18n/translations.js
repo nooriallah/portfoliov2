@@ -1,6 +1,6 @@
 export const LANGUAGES = [
   { code: "en", label: "English", dir: "ltr" },
-  { code: "fa", label: "دری", dir: "rtl" },
+  { code: "fa", label: "فارسی", dir: "rtl" },
   { code: "ps", label: "پښتو", dir: "rtl" },
 ];
 
@@ -21,7 +21,7 @@ export const translations = {
     roles: ["Web Developer", "Programmer", "Front-End Engineer", "Freelancer"],
     hero: {
       greeting: "Hi, I'm",
-      name: "Nooriallah Qayoumi",
+      name: "Noorullah Qayoumi",
       intro: "I am a {role}",
       tagline:
         "Creative developer specializing in front-end with solid back-end skills, turning ideas into fast, clean, reliable web experiences.",
@@ -61,7 +61,7 @@ export const translations = {
       },
       backend: {
         title: "Back-End & APIs",
-        desc: "Server-side logic and REST APIs with PHP/Laravel and Node.js.",
+        desc: "Server-side logic and REST APIs with PHP/Laravel and Livewire.",
       },
       cms: {
         title: "WordPress & CMS",
@@ -73,7 +73,7 @@ export const translations = {
       },
       db: {
         title: "Database Design",
-        desc: "Well-structured, performant MySQL/PostgreSQL schemas.",
+        desc: "Well-structured, performant MySQL database schemas.",
       },
       support: {
         title: "Maintenance & Support",
@@ -82,28 +82,23 @@ export const translations = {
     },
     work: [
       {
-        title: "Shenaas Platform",
-        tag: "Web App",
-        desc: "Academic / journal management system built around OJS workflows.",
+        title: "Samangan Journal Publishing System",
+        desc: "Academic journal management system built around OJS workflows.",
       },
       {
         title: "E-Commerce Site",
-        tag: "Laravel",
         desc: "Storefront with cart, payments and an admin dashboard.",
       },
       {
         title: "Corporate Website",
-        tag: "WordPress",
         desc: "Custom-themed marketing site with a CMS for the client team.",
       },
       {
         title: "React Dashboard",
-        tag: "React.js",
         desc: "Data-driven admin panel with charts and role-based access.",
       },
     ],
-    workNote:
-      "These are placeholder projects — replace them in i18n/translations.js.",
+    workNote: "A selection of recent projects — more available on request.",
     experience: {
       heading: "My Experience",
       items: [
@@ -111,13 +106,25 @@ export const translations = {
           year: "2021 — Present",
           title: "Freelance Web Developer",
           place: "Self-employed",
-          desc: "Building web apps and sites for clients across PHP, Laravel and React.",
+          desc: "Building web apps and sites for clients across WordPress, PHP, Laravel and React.",
         },
         {
-          year: "2020 — 2021",
+          year: "2024 — Present",
           title: "Web Developer",
-          place: "Shenaas Project",
-          desc: "Front-end and CMS work on an academic publishing platform.",
+          place: "Shenaas Marketing Agency, Kabul",
+          desc: "Developing and maintaining client websites at Shenaas, a marketing agency in Kabul.",
+        },
+        {
+          year: "2023 — 2024",
+          title: "Web Developer",
+          place: "OBRANG & BP, Kabul",
+          desc: "Built innovative digital solutions at Obrang & Brightpoint.",
+        },
+        {
+          year: "2022",
+          title: "Surveyor / SCOPE Registration Officer",
+          place: "ASOW, Kabul & Bamian",
+          desc: "Biometric registration officer using advanced identification technology.",
         },
       ],
     },
@@ -131,10 +138,22 @@ export const translations = {
           desc: "Foundations in software engineering, databases and web technologies.",
         },
         {
+          year: "2023 — Present",
+          title: "PHP, Laravel & Livewire",
+          place: "Laracasts (Online)",
+          desc: "Proficient in PHP, Laravel and Livewire via the Laracasts course.",
+        },
+        {
+          year: "2023",
+          title: "JavaScript & React.js",
+          place: "Scrimba (Online)",
+          desc: "Skilled in JavaScript and React.js, completed Scrimba's course.",
+        },
+        {
           year: "Ongoing",
           title: "Continuous Learning",
-          place: "Online",
-          desc: "Modern JS frameworks, DevOps and cloud deployment.",
+          place: "Online (Laracasts, Scrimba, YouTube)",
+          desc: "Modern JS & PHP frameworks, DevOps and cloud deployment.",
         },
       ],
     },
@@ -165,6 +184,9 @@ export const translations = {
         subject: "Subject",
         message: "Your Message",
         send: "Send Message",
+        sending: "Sending...",
+        sent: "Thanks! Your message has been sent.",
+        error: "Something went wrong. Please try again or email me directly.",
       },
     },
     footer: { rights: "All rights reserved." },
@@ -183,7 +205,7 @@ export const translations = {
       contact: "تماس",
     },
     ui: {
-      hireMe: "استخدام من",
+      hireMe: "همکاری با من",
       downloadCv: "دانلود رزومه",
       viewWork: "مشاهده کارها",
     },
@@ -230,7 +252,7 @@ export const translations = {
       },
       backend: {
         title: "بک‌اند و API",
-        desc: "منطق سمت سرور و REST API با PHP/Laravel و Node.js.",
+        desc: "منطق سمت سرور و REST API با PHP/Laravel و Livewire.",
       },
       cms: {
         title: "وردپرس و CMS",
@@ -242,7 +264,7 @@ export const translations = {
       },
       db: {
         title: "طراحی پایگاه داده",
-        desc: "ساختارهای داده MySQL/PostgreSQL با ساختار مناسب و کارآمد.",
+        desc: "ساختارهای داده MySQL با ساختار مناسب و کارآمد.",
       },
       support: {
         title: "نگهداری و پشتیبانی",
@@ -251,28 +273,23 @@ export const translations = {
     },
     work: [
       {
-        title: "پلتفرم شناس",
-        tag: "Web App",
-        desc: "سیستم مدیریت ژورنال/علمی مبتنی بر OJS.",
+        title: "سیستم نشر ژورنال سمنگان",
+        desc: "سیستم مدیریت ژورنال علمی مبتنی بر گردش‌کار OJS.",
       },
       {
         title: "فروشگاه اینترنتی",
-        tag: "Laravel",
         desc: "فروشگاه با سبد خرید، پرداخت و پنل مدیریت.",
       },
       {
         title: "وب‌سایت شرکتی",
-        tag: "WordPress",
         desc: "سایت بازاریابی با قالب سفارشی و CMS برای تیم مشتری.",
       },
       {
         title: "داشبورد React",
-        tag: "React.js",
         desc: "پنل مدیریت داده‌محور با نمودار و دسترسی نقش‌محور.",
       },
     ],
-    workNote:
-      "این‌ها پروژه‌های نمونه هستند — آن‌ها را در i18n/translations.js جایگزین کنید.",
+    workNote: "گزیده‌ای از پروژه‌های اخیر — موارد بیشتر در صورت درخواست.",
     experience: {
       heading: "تجربه من",
       items: [
@@ -280,13 +297,25 @@ export const translations = {
           year: "۲۰۲۱ — اکنون",
           title: "توسعه‌دهنده وب فریلنس",
           place: "خوداشتغال",
-          desc: "ساخت اپلیکیشن‌ها و سایت‌های وب برای مشتریان با PHP، Laravel و React.",
+          desc: "ساخت اپلیکیشن‌ها و وب‌سایت‌ها برای مشتریان با WordPress، PHP، Laravel و React.",
         },
         {
-          year: "۲۰۲۰ — ۲۰۲۱",
+          year: "۲۰۲۴ — اکنون",
           title: "توسعه‌دهنده وب",
-          place: "پروژه شناس",
-          desc: "کار فرانت‌اند و CMS روی یک پلتفرم نشر علمی.",
+          place: "آژانس بازاریابی شناس، کابل",
+          desc: "توسعه و نگهداری وب‌سایت‌های مشتریان در شناس، یک آژانس بازاریابی در کابل.",
+        },
+        {
+          year: "۲۰۲۳ — ۲۰۲۴",
+          title: "توسعه‌دهنده وب",
+          place: "OBRANG و BP، کابل",
+          desc: "ساخت راه‌حل‌های دیجیتال نوآورانه در Obrang و Brightpoint.",
+        },
+        {
+          year: "۲۰۲۲",
+          title: "نقشه‌بردار / مأمور ثبت SCOPE",
+          place: "ASOW، کابل و بامیان",
+          desc: "مأمور ثبت بیومتریک با استفاده از فناوری پیشرفته شناسایی.",
         },
       ],
     },
@@ -300,10 +329,22 @@ export const translations = {
           desc: "مبانی مهندسی نرم‌افزار، پایگاه داده و فناوری‌های وب.",
         },
         {
+          year: "۲۰۲۳ — اکنون",
+          title: "PHP، Laravel و Livewire",
+          place: "Laracasts (آنلاین)",
+          desc: "تسلط بر PHP، Laravel و Livewire از طریق دوره Laracasts.",
+        },
+        {
+          year: "۲۰۲۳",
+          title: "JavaScript و React.js",
+          place: "Scrimba (آنلاین)",
+          desc: "ماهر در JavaScript و React.js، تکمیل دوره Scrimba.",
+        },
+        {
           year: "در حال یادگیری",
           title: "یادگیری مستمر",
-          place: "آنلاین",
-          desc: "فریم‌ورک‌های مدرن JS، DevOps و استقرار ابری.",
+          place: "آنلاین (Laracasts، Scrimba، YouTube)",
+          desc: "فریم‌ورک‌های مدرن JS و PHP، DevOps و استقرار ابری.",
         },
       ],
     },
@@ -334,6 +375,9 @@ export const translations = {
         subject: "موضوع",
         message: "پیام شما",
         send: "ارسال پیام",
+        sending: "در حال ارسال...",
+        sent: "ممنون! پیام شما ارسال شد.",
+        error: "مشکلی پیش آمد. لطفاً دوباره تلاش کنید یا مستقیماً ایمیل بزنید.",
       },
     },
     footer: { rights: "تمامی حقوق محفوظ است." },
@@ -404,7 +448,7 @@ export const translations = {
       },
       backend: {
         title: "بیک‌اینډ او APIs",
-        desc: "د سرور خوا منطق او REST APIs د PHP/Laravel او Node.js سره.",
+        desc: "د سرور خوا منطق او REST APIs د PHP/Laravel او Livewire سره.",
       },
       cms: {
         title: "وردپرس او CMS",
@@ -416,7 +460,7 @@ export const translations = {
       },
       db: {
         title: "د ډیټابیس ډیزاین",
-        desc: "ښه جوړ شوي او اغیزمن MySQL/PostgreSQL سکیماوې.",
+        desc: "ښه جوړ شوي او اغیزمن MySQL ډیټابیس سکیماوې.",
       },
       support: {
         title: "ساتنه او ملاتړ",
@@ -425,27 +469,23 @@ export const translations = {
     },
     work: [
       {
-        title: "د شناس پلیټ‌فارم",
-        tag: "Web App",
-        desc: "د OJS پر بنسټ د ژورنال/علمي مدیریت سیسټم.",
+        title: "د سمنګان ژورنال د خپرونې سیسټم",
+        desc: "د OJS د کاري بهیر پر بنسټ د علمي ژورنال د مدیریت سیسټم.",
       },
       {
         title: "آنلاین پلورنځی",
-        tag: "Laravel",
         desc: "د پیرود ټوکري، تادیاتو او اډمین ډشبورډ سره پلورنځی.",
       },
       {
         title: "شرکتي ویب‌پاڼه",
-        tag: "WordPress",
         desc: "د دودیز قالب او CMS سره د بازارموندنې سایټ د پیرودونکي ټیم لپاره.",
       },
       {
         title: "React ډشبورډ",
-        tag: "React.js",
         desc: "د ډیټا پر بنسټ اډمین پینل د چارټونو او رول-بنسټیز لاسرسي سره.",
       },
     ],
-    workNote: "دا نمونه پروژې دي — په i18n/translations.js کې یې بدل کړئ.",
+    workNote: "د وروستیو پروژو یوه ټاکنه — نور د غوښتنې پر بنسټ شته.",
     experience: {
       heading: "زما تجربه",
       items: [
@@ -453,13 +493,25 @@ export const translations = {
           year: "۲۰۲۱ — اوس",
           title: "فري‌لانس ویب پراختیا کوونکی",
           place: "ځان‌بوختیا",
-          desc: "د پیرودونکو لپاره د PHP، Laravel او React سره د ویب اپونو او سایټونو جوړول.",
+          desc: "د پیرودونکو لپاره د WordPress، PHP، Laravel او React سره د ویب اپونو او سایټونو جوړول.",
         },
         {
-          year: "۲۰۲۰ — ۲۰۲۱",
+          year: "۲۰۲۴ — اوس",
           title: "ویب پراختیا کوونکی",
-          place: "د شناس پروژه",
-          desc: "د یوې علمي خپرونې پلیټ‌فارم باندې د فرنټ‌اینډ او CMS کار.",
+          place: "د شناس بازارموندنې اژانس، کابل",
+          desc: "په شناس کې، چې په کابل کې د بازارموندنې یوه اژانس ده، د پیرودونکو ویب‌پاڼو پراختیا او ساتنه.",
+        },
+        {
+          year: "۲۰۲۳ — ۲۰۲۴",
+          title: "ویب پراختیا کوونکی",
+          place: "OBRANG او BP، کابل",
+          desc: "په Obrang او Brightpoint کې د نوښتګرو ډیجیټل حلونو جوړول.",
+        },
+        {
+          year: "۲۰۲۲",
+          title: "سروی‌کوونکی / د SCOPE د راجستر افسر",
+          place: "ASOW، کابل او بامیان",
+          desc: "د پرمختللي پیژندنې ټکنالوژۍ په کارولو سره د بایومیټریک راجستر افسر.",
         },
       ],
     },
@@ -473,10 +525,22 @@ export const translations = {
           desc: "د سافټویر انجینرۍ، ډیټابیس او ویب ټکنالوژیو بنسټونه.",
         },
         {
+          year: "۲۰۲۳ — اوس",
+          title: "PHP، Laravel او Livewire",
+          place: "Laracasts (آنلاین)",
+          desc: "د Laracasts کورس له لارې په PHP، Laravel او Livewire مهارت.",
+        },
+        {
+          year: "۲۰۲۳",
+          title: "JavaScript او React.js",
+          place: "Scrimba (آنلاین)",
+          desc: "په JavaScript او React.js کې مهارت، د Scrimba کورس بشپړ کړ.",
+        },
+        {
           year: "روان",
           title: "دوامداره زده‌کړه",
-          place: "آنلاین",
-          desc: "عصري JS فریم‌ورکونه، DevOps او کلاوډ پلي کول.",
+          place: "آنلاین (Laracasts، Scrimba، YouTube)",
+          desc: "عصري JS او PHP فریم‌ورکونه، DevOps او کلاوډ پلي کول.",
         },
       ],
     },
@@ -507,6 +571,10 @@ export const translations = {
         subject: "موضوع",
         message: "ستاسو پیغام",
         send: "پیغام ولیږئ",
+        sending: "لیږل کیږي...",
+        sent: "مننه! ستاسو پیغام ولیږل شو.",
+        error:
+          "یوه ستونزه رامنځته شوه. مهرباني وکړئ بیا هڅه وکړئ یا مستقیم ایمیل راولیږئ.",
       },
     },
     footer: { rights: "ټول حقونه خوندي دي." },
