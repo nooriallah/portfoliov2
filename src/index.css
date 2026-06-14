@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+/* Use a readable Arabic-script font when RTL is active */
+[dir="rtl"] body {
+  font-family: Vazirmatn, system-ui, "Segoe UI", sans-serif;
+}
