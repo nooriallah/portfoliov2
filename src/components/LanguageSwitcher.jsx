@@ -3,7 +3,7 @@ import { Languages, Check, ChevronDown } from "lucide-react";
 import { LANGUAGES } from "./i18n/translations.js";
 import { useLang } from "./i18n/LanguageProvider.jsx";
 
-export default function LanguageSwitcher() {
+export default function  LanguageSwitcher() {
   const { lang, setLang } = useLang();
   const [open, setOpen] = useState(false);
   const current = LANGUAGES.find((l) => l.code === lang) || LANGUAGES[0];

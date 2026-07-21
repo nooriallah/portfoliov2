@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
 import { NAV_IDS } from "../data/content.js";
 import { scrollToId } from "../utils/scroll.js";
 import { useLang } from "./i18n/LanguageProvider.jsx";
@@ -27,7 +27,7 @@ export default function Navbar({ scrolled, active }) {
             N
           </span>
           {/* Show only the name here not surname */}
-          { (t.hero.name).split(" ")[0] }
+          {t.hero.name.split(" ")[0]}
         </button>
 
         <nav className="hidden md:flex items-center gap-1">

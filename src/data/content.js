@@ -13,7 +13,8 @@ export const IMG = {
   logo: "https://nooriallah.netlify.app/img/logo.webp",
   hero: "https://nooriallah.netlify.app/img/me/hero_pic3.webp",
   about: "https://nooriallah.netlify.app/img/me/about_pic.webp",
-  cv: "https://nooriallah.netlify.app/cv/Noorullah_Qayoumi_CV.pdf",
+  // Impor cv from src/data/cv/ to here, so it can be downloaded from the hero section.
+  cv: "src/data/cv/Noorullah_Qayoumi_CV.pdf",
   qr: "https://nooriallah.netlify.app/img/qrcode.png",
   t1: "https://nooriallah.netlify.app/img/clients/testimonial-1.jpg",
   t2: "https://nooriallah.netlify.app/img/clients/testimonial-2.jpg",
@@ -37,12 +38,24 @@ export const skillsMeta = [
   {
     id: "frontend",
     icon: Layout,
-    items: ["HTML5", "CSS3", "JavaScript", "React.js", "jQuery", "Tailwind CSS", "Bootstrap 5"],
+    items: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "React.js",
+      "jQuery",
+      "Tailwind CSS",
+      "Bootstrap 5",
+    ],
   },
   { id: "backend", icon: Server, items: ["PHP", "Laravel", "Livewire"] },
   { id: "databases", icon: Database, items: ["MySQL"] },
   { id: "tools", icon: Wrench, items: ["WordPress", "Webflow", "OJS", "Git"] },
-  { id: "languages", icon: Code2, items: ["PHP", "JavaScript", "Java", "Python"] },
+  {
+    id: "languages",
+    icon: Code2,
+    items: ["PHP", "JavaScript", "Java", "Python"],
+  },
 ];
 
 // Service icons; title + desc come from translations (keyed by id).
@@ -73,6 +86,6 @@ export const reviewMeta = [
 export const socials = [
   { icon: Github, url: "https://github.com/nooriallah/" },
   { icon: Linkedin, url: "https://www.linkedin.com/in/eng-nooriallah/" },
-  { icon: Facebook, url: "https://www.facebook.com/Eng.Nooriallah" },
-  { icon: Instagram, url: "https://www.instagram.com/eng.nooriallah/" },
+  { icon: Facebook, url: "https://www.facebook.com/eng.noorullah0" },
+  { icon: Instagram, url: "https://www.instagram.com/eng.noorullah_/" },
 ];

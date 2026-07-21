@@ -58,6 +58,7 @@ export default function Hero() {
                 href={IMG.cv}
                 target="_blank"
                 rel="noreferrer"
+                download="Noorullah_Qayoumi_CV.pdf"
                 className="inline-flex items-center gap-2 px-5 py-3 font-semibold text-white rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 hover:opacity-90 transition"
               >
                 <Download size={18} /> {t.ui.downloadCv}

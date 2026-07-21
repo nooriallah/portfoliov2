@@ -1,7 +1,6 @@
-import { ExternalLink } from "lucide-react";
 import Section from "./ui/Section.jsx";
 import Reveal from "./ui/Reveal.jsx";
-import { workMeta } from "../data/content.js";
+import { projects } from "../data/projects.js";
 import { useLang } from "./i18n/LanguageProvider.jsx";
 
 export default function Work() {
@@ -14,30 +13,42 @@ export default function Work() {
       title={t.sections.work.title}
       className="bg-section"
     >
-      <div className="grid sm:grid-cols-2 gap-6">
-        {workMeta.map((m, i) => {
-          const p = t.work[i];
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((p, i) => {
           const card = (
-            <div className="group h-full p-6 rounded-2xl border border-line bg-surface hover:border-accent/50 hover:bg-surface-strong transition-all">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-accent/10 text-accent">
-                  {m.tag}
-                </span>
-                <ExternalLink
-                  size={18}
-                  className={`transition ${m.link ? "text-faint group-hover:text-accent" : "text-line"}`}
-                />
+            <div className="group relative h-full overflow-hidden rounded-2xl border border-line bg-surface hover:border-accent/50 transition-all">
+              {/* number badge (like the old portfolio) */}
+              <span className="absolute top-3 start-3 z-10 text-xs font-bold px-2.5 py-1 rounded-full bg-accent text-white shadow">
+                {i + 1}
+              </span>
+
+              <img
+                src={p.image}
+                alt={p.title}
+                loading="lazy"
+                className="w-full aspect-[4/3] object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+
+              {/* hover overlay (like the old portfolio) */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-center bg-accent/90 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500">
+                {/* <span className="text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-white/15 text-white">
+                  {p.category}
+                </span> */}
+                <h3 className="text-lg font-bold text-white">{p.title}</h3>
+                {p.url && (
+                  <span className="text-sm text-white/90 underline underline-offset-4">
+                    {t.sections.work.visit}
+                  </span>
+                )}
               </div>
-              <h3 className="text-lg font-bold text-heading mb-2">{p.title}</h3>
-              <p className="text-sm text-muted leading-relaxed">{p.desc}</p>
             </div>
           );
 
           return (
-            <Reveal key={i} delay={i * 90}>
-              {m.link ? (
+            <Reveal key={p.title} delay={(i % 3) * 90}>
+              {p.url ? (
                 <a
-                  href={m.link}
+                  href={p.url}
                   target="_blank"
                   rel="noreferrer"
                   className="block h-full"
@@ -51,7 +62,6 @@ export default function Work() {
           );
         })}
       </div>
-      <p className="mt-6 text-sm text-faint">{t.workNote}</p>
     </Section>
   );
 }

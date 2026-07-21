@@ -28,7 +28,7 @@ export const translations = {
     },
     sections: {
       about: { eyebrow: "About", title: "About Me" },
-      work: { eyebrow: "Portfolio", title: "Selected Work" },
+      work: { eyebrow: "Portfolio", title: "Selected Work", visit: "Visit website" },
       experience: { eyebrow: "Quality", title: "Experience & Education" },
       skills: { eyebrow: "Skills", title: "What I Work With" },
       services: { eyebrow: "Services", title: "What I Offer" },
@@ -86,11 +86,11 @@ export const translations = {
         desc: "Academic journal management system built around OJS workflows.",
       },
       {
-        title: "E-Commerce Site",
+        title: "Amanzada Online Store",
         desc: "Storefront with cart, payments and an admin dashboard.",
       },
       {
-        title: "Corporate Website",
+        title: "The Hope Projects",
         desc: "Custom-themed marketing site with a CMS for the client team.",
       },
       {
@@ -219,7 +219,7 @@ export const translations = {
     },
     sections: {
       about: { eyebrow: "درباره", title: "درباره من" },
-      work: { eyebrow: "نمونه‌کار", title: "کارهای منتخب" },
+      work: { eyebrow: "نمونه‌کار", title: "پروژه های تکمیل شده", visit: "مشاهده وبسایت" },
       experience: { eyebrow: "کیفیت", title: "تجربه و تحصیلات" },
       skills: { eyebrow: "مهارت‌ها", title: "با چه چیزهایی کار می‌کنم" },
       services: { eyebrow: "خدمات", title: "چه خدماتی ارائه می‌دهم" },
@@ -415,7 +415,7 @@ export const translations = {
     },
     sections: {
       about: { eyebrow: "په اړه", title: "زما په اړه" },
-      work: { eyebrow: "پورټفولیو", title: "ټاکل شوي کارونه" },
+      work: { eyebrow: "پورټفولیو", title: "ټاکل شوي کارونه", visit: "ویب پاڼه وګورئ" },
       experience: { eyebrow: "کیفیت", title: "تجربه او زده‌کړه" },
       skills: { eyebrow: "مهارتونه", title: "زه له څه سره کار کوم" },
       services: { eyebrow: "خدمتونه", title: "زه څه وړاندې کوم" },
