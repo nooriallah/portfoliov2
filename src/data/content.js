@@ -49,8 +49,12 @@ export const skillsMeta = [
     ],
   },
   { id: "backend", icon: Server, items: ["PHP", "Laravel", "Livewire"] },
-  { id: "databases", icon: Database, items: ["MySQL"] },
-  { id: "tools", icon: Wrench, items: ["WordPress", "Webflow", "OJS", "Git"] },
+  { id: "databases", icon: Database, items: ["MySQL", "SQLlite"] },
+  {
+    id: "tools",
+    icon: Wrench,
+    items: ["WordPress", "Webflow", "OJS", "Git", "STRAPI"],
+  },
   {
     id: "languages",
     icon: Code2,

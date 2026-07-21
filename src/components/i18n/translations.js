@@ -28,7 +28,11 @@ export const translations = {
     },
     sections: {
       about: { eyebrow: "About", title: "About Me" },
-      work: { eyebrow: "Portfolio", title: "Selected Work", visit: "Visit website" },
+      work: {
+        eyebrow: "Portfolio",
+        title: "Selected Work",
+        visit: "Visit website",
+      },
       experience: { eyebrow: "Quality", title: "Experience & Education" },
       skills: { eyebrow: "Skills", title: "What I Work With" },
       services: { eyebrow: "Services", title: "What I Offer" },
@@ -206,7 +210,7 @@ export const translations = {
     },
     ui: {
       hireMe: "همکاری با من",
-      downloadCv: "دانلود رزومه",
+      downloadCv: "دانلود سی‌وی",
       viewWork: "مشاهده کارها",
     },
     roles: ["توسعه‌دهنده وب", "برنامه‌نویس", "مهندس فرانت‌اند", "فریلنسر"],
@@ -215,11 +219,15 @@ export const translations = {
       name: "نورالله قیومی",
       intro: "من یک {role} هستم",
       tagline:
-        "توسعه‌دهنده خلاق با تخصص در فرانت‌اند و مهارت‌های قوی بک‌اند که ایده‌ها را به تجربه‌های وبی سریع، تمیز و قابل‌اعتماد تبدیل می‌کند.",
+        "توسعه‌دهنده خلاق با تخصص در فرانت‌اند و مهارت‌های قوی بک‌اند که ایده‌ها را به تجربه‌های ویبی قابل‌اعتماد تبدیل می‌کند.",
     },
     sections: {
       about: { eyebrow: "درباره", title: "درباره من" },
-      work: { eyebrow: "نمونه‌کار", title: "پروژه های تکمیل شده", visit: "مشاهده وبسایت" },
+      work: {
+        eyebrow: "نمونه‌کار",
+        title: "پروژه های تکمیل شده",
+        visit: "مشاهده وبسایت",
+      },
       experience: { eyebrow: "کیفیت", title: "تجربه و تحصیلات" },
       skills: { eyebrow: "مهارت‌ها", title: "با چه چیزهایی کار می‌کنم" },
       services: { eyebrow: "خدمات", title: "چه خدماتی ارائه می‌دهم" },
@@ -230,7 +238,7 @@ export const translations = {
       heading: "توسعه‌دهنده وب و برنامه‌نویس",
       text: "توسعه‌دهنده خلاق وب با تخصص در توسعه فرانت‌اند و بک‌اند، آشنا با چرخه کامل توسعه پروژه‌های تحت وب و مسلط بر زبان‌ها، فریم‌ورک‌ها و سیستم‌های مدیریت محتوای متعدد.",
       facts: [
-        ["مدرک", "لیسانس علوم کامپیوتر"],
+        ["درجه تحصیل", "لیسانس کامپیوتر ساینس"],
         ["تجربه", "+۴ سال"],
         ["موقعیت", "کابل، افغانستان"],
         ["فریلنس", "در دسترس"],
@@ -241,7 +249,7 @@ export const translations = {
     skills: {
       frontend: "فرانت‌اند",
       backend: "بک‌اند",
-      databases: "پایگاه داده",
+      databases: "DBMS's",
       tools: "CMS و ابزارها",
       languages: "زبان‌ها",
     },
@@ -296,7 +304,7 @@ export const translations = {
         {
           year: "۲۰۲۱ — اکنون",
           title: "توسعه‌دهنده وب فریلنس",
-          place: "خوداشتغال",
+          place: "فری لنسر",
           desc: "ساخت اپلیکیشن‌ها و وب‌سایت‌ها برای مشتریان با WordPress، PHP، Laravel و React.",
         },
         {
@@ -323,8 +331,8 @@ export const translations = {
       heading: "تحصیلات من",
       items: [
         {
-          year: "فارغ‌التحصیل",
-          title: "لیسانس علوم کامپیوتر",
+          year: "فارغ‌ تحصیل",
+          title: "کامپیوتر ساینس",
           place: "کابل، افغانستان",
           desc: "مبانی مهندسی نرم‌افزار، پایگاه داده و فناوری‌های وب.",
         },
@@ -415,7 +423,11 @@ export const translations = {
     },
     sections: {
       about: { eyebrow: "په اړه", title: "زما په اړه" },
-      work: { eyebrow: "پورټفولیو", title: "ټاکل شوي کارونه", visit: "ویب پاڼه وګورئ" },
+      work: {
+        eyebrow: "پورټفولیو",
+        title: "ټاکل شوي کارونه",
+        visit: "ویب پاڼه وګورئ",
+      },
       experience: { eyebrow: "کیفیت", title: "تجربه او زده‌کړه" },
       skills: { eyebrow: "مهارتونه", title: "زه له څه سره کار کوم" },
       services: { eyebrow: "خدمتونه", title: "زه څه وړاندې کوم" },
@@ -426,7 +438,7 @@ export const translations = {
       heading: "د ویب پراختیا کوونکی او پروګرامر",
       text: "یو خلاق ویب پراختیا کوونکی چې په فرنټ‌اینډ او بیک‌اینډ پراختیا کې تخصص لري، د ویب اپلیکیشن پروژو د بشپړ پراختیایي دورې سره بلد دی او په ډیرو ژبو، فریم‌ورکونو او د محتوا مدیریت سیسټمونو پوهیږي.",
       facts: [
-        ["سند", "د کمپیوټر ساینس لیسانس"],
+        ["درجه تحصیل", "لیسانس کامپیوتر ساینس"],
         ["تجربه", "+۴ کاله"],
         ["موقعیت", "کابل، افغانستان"],
         ["فري‌لانس", "شته"],
@@ -519,8 +531,8 @@ export const translations = {
       heading: "زما زده‌کړه",
       items: [
         {
-          year: "فارغ",
-          title: "د کمپیوټر ساینس لیسانس",
+          year: "فارغ‌ تحصیل",
+          title: "لیسانس کامپیوتر ساینس",
           place: "کابل، افغانستان",
           desc: "د سافټویر انجینرۍ، ډیټابیس او ویب ټکنالوژیو بنسټونه.",
         },
@@ -561,7 +573,7 @@ export const translations = {
     contact: {
       items: [
         { label: "ایمیل", value: "nooriallah18@gmail.com" },
-        { label: "تلیفون", value: "+93 (0) 773 77 17 16" },
+        { label: "تلفن", value: "+93 (0) 773 77 17 16" },
         { label: "موقعیت", value: "پل سرخ، کارته دریم، کابل" },
       ],
       qrText: "زما د اړیکو معلومات د خوندي کولو لپاره سکن کړئ.",
