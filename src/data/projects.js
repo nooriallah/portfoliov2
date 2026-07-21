@@ -31,9 +31,9 @@ export const projects = [
     category: "OJS",
   },
   {
-    title: "Smart Home",
+    title: "Smart Home (Inovex)",
     image: "img/portfo_pics/blacksquare.jpg",
-    url: "https://blacksquare.af/",
+    url: "https://inovex.af/",
     category: "WordPress",
   },
   {
