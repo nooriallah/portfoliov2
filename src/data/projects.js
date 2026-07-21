@@ -75,7 +75,7 @@ export const projects = [
   {
     title: "Flower store in Dubai",
     image: "img/portfo_pics/loiisflowers.webp",
-    url: "https://loiisflowers.com/",
+    url: "https://dubairoses.ae/",
     category: "WordPress",
   },
   {
