@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { NAV_IDS } from "../data/content.js";
 import { scrollToId } from "../utils/scroll.js";
 import { useLang } from "./i18n/LanguageProvider.jsx";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
+import ScrollProgressBar from "./ui/ScrollProgressBar.jsx";
 
 export default function Navbar({ scrolled, active }) {
   const { t } = useLang();
@@ -30,7 +31,7 @@ export default function Navbar({ scrolled, active }) {
           {t.hero.name.split(" ")[0]}
         </button>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1">
           {NAV_IDS.map((id) => (
             <button
               key={id}
@@ -47,13 +48,13 @@ export default function Navbar({ scrolled, active }) {
           <LanguageSwitcher />
           <button
             onClick={() => go("contact")}
-            className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 hover:opacity-90 transition"
+            className="hidden lg:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent transition"
           >
             {t.ui.hireMe} <ArrowRight size={16} />
           </button>
           <button
             onClick={() => setOpen((o) => !o)}
-            className="md:hidden text-heading p-2"
+            className="lg:hidden text-heading p-2"
           >
             {open ? <X /> : <Menu />}
           </button>
@@ -61,7 +62,7 @@ export default function Navbar({ scrolled, active }) {
       </div>
 
       {open && (
-        <nav className="md:hidden bg-bg/95 backdrop-blur border-t border-line-soft px-6 py-4 flex flex-col gap-1">
+        <nav className="lg:hidden bg-bg/95 backdrop-blur border-t border-line-soft px-6 py-4 flex flex-col gap-1">
           {NAV_IDS.map((id) => (
             <button
               key={id}
@@ -73,6 +74,8 @@ export default function Navbar({ scrolled, active }) {
           ))}
         </nav>
       )}
+
+      <ScrollProgressBar />
     </header>
   );
 }

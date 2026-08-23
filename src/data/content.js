@@ -13,8 +13,8 @@ export const IMG = {
   logo: "https://nooriallah.netlify.app/img/logo.webp",
   hero: "https://nooriallah.netlify.app/img/me/hero_pic3.webp",
   about: "https://nooriallah.netlify.app/img/me/about_pic.webp",
-  // Impor cv from src/data/cv/ to here, so it can be downloaded from the hero section.
-  cv: "src/data/cv/Noorullah_Qayoumi_CV.pdf",
+  // Served from public/ so the path also resolves in a production build.
+  cv: "/cv/Noorullah_Qayoumi_CV.pdf",
   qr: "https://nooriallah.netlify.app/img/qrcode.png",
   t1: "https://nooriallah.netlify.app/img/clients/testimonial-1.jpg",
   t2: "https://nooriallah.netlify.app/img/clients/testimonial-2.jpg",
