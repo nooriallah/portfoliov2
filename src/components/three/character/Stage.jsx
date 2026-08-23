@@ -34,6 +34,13 @@ export function StudioLights({ theme = "dark", intensity = 1 }) {
         intensity={(dark ? 1.9 : 0.8) * intensity}
         color={LOOK.accent}
       />
+      {/* camera-side fill: the figure faces the visitor, and a face that
+          falls into shadow reads as a mask */}
+      <directionalLight
+        position={[0.4, 1.2, 5]}
+        intensity={(dark ? 1.1 : 0.6) * intensity}
+        color={dark ? "#c7d8f5" : "#ffffff"}
+      />
     </>
   );
 }

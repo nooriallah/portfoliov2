@@ -7,32 +7,35 @@
  */
 export const LOOK = {
   // --- skin ---
-  skin: "#e3ac83",
-  skinDeep: "#c98d63", // ears, inner mouth shadow
+  skin: "#efc09c", // fair-warm, from the photo
+  skinDeep: "#d6a077", // ears, inner mouth shadow
+  mouth: "#6b4237", // a wide thin dark line — never a coloured "lip"
 
   // --- hair ---
-  hair: "#20150f",
-  hairCap: 1.46, // polar sweep of the crown cap, in radians
-  hairTilt: 0.1, // forward lean, which is what makes a hairline read naturally
+  // Warm brown with a lighter sheen lobe, per the reference art style.
+  hair: "#2f1e14", // dark chestnut, swept back
+  hairLight: "#4a3220",
+  hairCap: 1.08, // polar sweep of the crown cap — ends above the brows; without glasses a deep cap reads as hair over the eyes
+  hairTilt: 0.07, // forward lean, which is what makes a hairline read naturally
   hairPuff: 1.05, // >1 gives it volume above the skull
   hairBack: 0.62, // how far down the back and sides the hair continues
 
   // --- face ---
-  brow: "#20150f",
+  brow: "#1d130c", // thick and dark — his most distinctive feature
   eye: "#1c1410",
   eyeWhite: "#f8fafc",
-  beard: "#20150f",
-  beardStrength: 0.85, // 0 = clean shaven, 1 = full beard
-  hasGlasses: true,
+  beard: "#3a2a1e", // short young beard, connected to a light moustache
+  beardStrength: 0.9, // 0 = clean shaven, 1 = full beard
+  hasGlasses: false, // the photo shows none
   glassesFrame: "#111827",
   glassesLens: "#93c5fd",
 
   // --- clothing ---
-  shirt: "#3d4c68",
-  shirtDeep: "#303c52", // sleeve bands and collar
-  trousers: "#1b2534",
-  shoe: "#0b1220",
-  shoeSole: "#8593a8",
+  shirt: "#e9e3d8", // cream hoodie body, from his photo
+  shirtDeep: "#7b5849", // brown raglan sleeves // sleeve bands and collar
+  trousers: "#9c7350", // camel-brown trousers
+  shoe: "#eceae3", // white sneakers
+  shoeSole: "#b6b0a4",
 
   // --- the accent used for holograms, scan lines and screen glow ---
   accent: "#60a5fa",

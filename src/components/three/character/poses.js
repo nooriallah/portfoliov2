@@ -42,11 +42,15 @@ function blink(rig, t) {
 }
 
 /** The head tracks the cursor a little. Small angles — it should feel alive, not possessed. */
-function lookAtCursor(rig, t, { yaw = 0.3, pitch = 0.16, baseYaw = 0 } = {}) {
+function lookAtCursor(
+  rig,
+  t,
+  { yaw = 0.3, pitch = 0.16, baseYaw = 0, basePitch = 0 } = {},
+) {
   const head = rig.head?.current;
   if (!head) return;
   const targetY = baseYaw + pointer.x * yaw;
-  const targetX = pointer.y * pitch + Math.sin(t * 0.6) * 0.014;
+  const targetX = basePitch + pointer.y * pitch + Math.sin(t * 0.6) * 0.014;
   head.rotation.y += (targetY - head.rotation.y) * 0.06;
   head.rotation.x += (targetX - head.rotation.x) * 0.06;
 }
@@ -72,18 +76,19 @@ export function poseTyping(rig, t) {
   // Shoulders swing almost fully forward and the elbows stay nearly straight:
   // the hands have to arrive at desk height, and the reach is only just long
   // enough. A comfortable-looking bend leaves them typing on thin air.
-  set(rig.shoulderL, -1.16 - tapL * 0.05 + leanIn, 0.12, 0.22);
-  set(rig.shoulderR, -1.16 - tapR * 0.05 + leanIn, -0.12, -0.22);
-  set(rig.elbowL, -0.42 + tapL * 0.1, 0, -0.14);
-  set(rig.elbowR, -0.42 + tapR * 0.1, 0, 0.14);
+  set(rig.shoulderL, -1.38 - tapL * 0.05 + leanIn, 0.12, 0.22);
+  set(rig.shoulderR, -1.38 - tapR * 0.05 + leanIn, -0.12, -0.22);
+  set(rig.elbowL, -0.3 + tapL * 0.1, 0, -0.14);
+  set(rig.elbowR, -0.3 + tapR * 0.1, 0, 0.14);
   set(rig.handL, 0.3 - tapL * 0.32, 0, 0.1);
   set(rig.handR, 0.3 - tapR * 0.32, 0, -0.1);
 
   set(rig.chest, 0.1 + leanIn * 0.6);
   breathe(rig, t, 0.7);
   blink(rig, t);
-  // seen from behind, so the head is turned towards the screen already
-  lookAtCursor(rig, t, { yaw: 0.24, pitch: 0.1, baseYaw: 0.12 });
+  // Seen from the front now: the head rests toward the monitor at his side
+  // and follows the cursor mirrored, since he faces the visitor.
+  lookAtCursor(rig, t, { yaw: -0.28, pitch: 0.1, baseYaw: 0.16, basePitch: -0.04 });
 }
 
 /* ------------------------------------------------------------------ *
@@ -142,10 +147,44 @@ export function poseArmsCrossed(rig, t) {
   lookAtCursor(rig, t, { yaw: 0.3, pitch: 0.16 });
 }
 
+/* ------------------------------------------------------------------ *
+ * Standing, holding a laptop at chest height — the About scene.
+ * The laptop itself is a separate prop placed where these hands end up.
+ * ------------------------------------------------------------------ */
+export function posePresenting(rig, t) {
+  const shift = Math.sin(t * 0.3);
+
+  set(rig.hips, 0, shift * 0.025, 0);
+  set(rig.chest, -0.03, shift * -0.015, 0);
+
+  set(rig.thighL, 0.02, 0, 0.04);
+  set(rig.thighR, -0.02, 0, -0.05);
+  set(rig.kneeL, 0.02);
+  set(rig.kneeR, 0.03);
+
+  // Both arms reach forward and *down* to the laptop at waist height. The
+  // first attempt bent the elbows a full -1.5 rad, which swings the forearms
+  // up past the shoulders — hands over the eyes, "hear no evil". Shoulder
+  // and elbow each carry about half the reach instead.
+  const tap = Math.max(0, Math.sin(t * 4.2));
+  set(rig.shoulderL, -0.5, 0.25, 0.24);
+  set(rig.elbowL, -0.6, -0.3, 0);
+  set(rig.handL, -0.2, 0, 0);
+
+  set(rig.shoulderR, -0.55 - tap * 0.04, -0.3, -0.2);
+  set(rig.elbowR, -0.5 + tap * 0.08, 0.25, 0);
+  set(rig.handR, 0.15 - tap * 0.25, 0, 0);
+
+  breathe(rig, t, 0.9);
+  blink(rig, t);
+  lookAtCursor(rig, t, { yaw: -0.34, pitch: 0.16, basePitch: 0.02 });
+}
+
 const POSES = {
   typing: poseTyping,
   standing: poseStanding,
   armsCrossed: poseArmsCrossed,
+  presenting: posePresenting,
 };
 
 /**

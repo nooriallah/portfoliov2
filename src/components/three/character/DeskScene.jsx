@@ -21,8 +21,12 @@ const FIGURE_Y = -0.4;
 
 const DESK_TOP = DESK + 0.025;
 
-const BASE_YAW = -0.34;
-const BASE_PITCH = -0.4;
+/* The set is yawed almost half a turn so the camera now faces the character
+   across the desk — monitor backs to the camera, face visible, hands on the
+   keyboard in front (the reference-image composition). The small offset off
+   a perfect half-turn is what keeps the desk from being a flat horizontal. */
+const BASE_YAW = Math.PI - 0.2;
+const BASE_PITCH = -0.14;
 
 const STAND = 0.15;
 
@@ -57,6 +61,12 @@ function Monitor({
           <planeGeometry args={[w - 0.045, h - 0.045]} />
           <meshBasicMaterial map={texture} toneMapped={false} />
         </mesh>
+        {/* a small glowing mark on the back panel, since the camera now
+            mostly sees the rear of the monitor */}
+        <mesh position={[0, 0.02, -0.0165]} rotation={[0, Math.PI, 0]}>
+          <circleGeometry args={[0.035, 20]} />
+          <meshBasicMaterial color={LOOK.accent} />
+        </mesh>
       </group>
       {/* stand */}
       <mesh position={[0, 0.008 + STAND / 2, -0.01]} material={materials.bezel}>
@@ -71,18 +81,19 @@ function Monitor({
 
 function Chair({ materials }) {
   return (
-    <group position={[0, 0, -0.08]}>
+    <group position={[0, 0, -0.16]}>
       <mesh position={[0, SEAT, 0]} material={materials.chair}>
         <boxGeometry args={[0.46, 0.06, 0.44]} />
       </mesh>
-      {/* Low back on purpose: a tall office chair hides the whole torso from
-          behind, which is the one view this scene is composed for. */}
+      {/* Tall back again: the scene is now viewed from the front, so the
+          back sits behind the figure and frames the silhouette instead of
+          hiding it. */}
       <mesh
-        position={[0, SEAT + 0.12, 0.19]}
-        rotation={[0.16, 0, 0]}
+        position={[0, SEAT + 0.3, 0.2]}
+        rotation={[0.14, 0, 0]}
         material={materials.chair}
       >
-        <boxGeometry args={[0.36, 0.24, 0.05]} />
+        <boxGeometry args={[0.44, 0.58, 0.055]} />
       </mesh>
       {/* gas lift */}
       <mesh position={[0, SEAT / 2, 0]} material={materials.metal}>
@@ -108,15 +119,15 @@ function Chair({ materials }) {
 
 function Desk({ materials }) {
   return (
-    <group position={[0, 0, -0.72]}>
+    <group position={[0, 0, -0.66]}>
       <mesh position={[0, DESK, 0]} material={materials.desk}>
-        <boxGeometry args={[1.74, 0.05, 0.7]} />
+        <boxGeometry args={[1.5, 0.05, 0.66]} />
       </mesh>
       {[
-        [-0.8, -0.28],
-        [0.8, -0.28],
-        [-0.8, 0.28],
-        [0.8, 0.28],
+        [-0.68, -0.26],
+        [0.68, -0.26],
+        [-0.68, 0.26],
+        [0.68, 0.26],
       ].map(([x, z]) => (
         <mesh
           key={`${x}-${z}`}
@@ -128,7 +139,7 @@ function Desk({ materials }) {
       ))}
       {/* desk mat */}
       <mesh
-        position={[0, DESK + 0.027, 0.16]}
+        position={[0, DESK + 0.027, 0.14]}
         rotation={[-Math.PI / 2, 0, 0]}
         material={materials.mat}
       >
@@ -142,19 +153,19 @@ function Props({ materials }) {
   return (
     <group>
       {/* keyboard */}
-      <mesh position={[0, DESK + 0.04, -0.56]} material={materials.keyboard}>
+      <mesh position={[-0.08, DESK + 0.04, -0.52]} material={materials.keyboard}>
         <boxGeometry args={[0.46, 0.022, 0.15]} />
       </mesh>
       {/* mouse */}
       <mesh
-        position={[0.31, DESK + 0.045, -0.55]}
+        position={[0.26, DESK + 0.045, -0.5]}
         scale={[1, 0.55, 1.5]}
         material={materials.keyboard}
       >
         <sphereGeometry args={[0.042, 12, 10]} />
       </mesh>
       {/* mug */}
-      <group position={[-0.55, DESK + 0.08, -0.66]}>
+      <group position={[-0.52, DESK + 0.08, -0.6]}>
         <mesh material={materials.mug}>
           <cylinderGeometry args={[0.055, 0.048, 0.11, 16]} />
         </mesh>
@@ -167,7 +178,7 @@ function Props({ materials }) {
         </mesh>
       </group>
       {/* plant on the floor */}
-      <group position={[-0.98, 0, -0.16]} scale={0.78}>
+      <group position={[-0.8, 0, 0.14]} scale={0.72}>
         <mesh position={[0, 0.13, 0]} material={materials.pot}>
           <cylinderGeometry args={[0.13, 0.1, 0.26, 14]} />
         </mesh>
@@ -312,10 +323,14 @@ export default function DeskScene({ theme = "dark", tier = "high" }) {
           key light keeps its direction while the set turns. */}
       <StudioLights theme={theme} />
       {/* screen spill on the figure's front */}
+      {/* The monitor's spill, landing on the face and shirt. The lights sit
+          outside the yawed set, so this is placed where the monitor *ends up*
+          after the base rotation (camera-left, slightly toward the camera) —
+          not at the monitor's set-space coordinates. */}
       <pointLight
-        position={[0, DESK + 0.35, -0.55]}
-        intensity={1.5}
-        distance={2.4}
+        position={[-0.8, DESK + 0.55, 0.55]}
+        intensity={2.6}
+        distance={2.8}
         color={LOOK.accent}
       />
 
@@ -338,18 +353,13 @@ export default function DeskScene({ theme = "dark", tier = "high" }) {
       />
 
       <Desk materials={materials} />
+      {/* One monitor, pushed to the side so the face stays the subject —
+          from the camera we see its back panel, like the reference images. */}
       <Monitor
-        position={[0.24, DESK_TOP, -0.9]}
-        rotation={[0, -0.16, 0]}
-        size={[0.8, 0.48]}
+        position={[0.48, DESK_TOP, -0.78]}
+        rotation={[0, 0.5, 0]}
+        size={[0.6, 0.4]}
         seed={11}
-        materials={materials}
-      />
-      <Monitor
-        position={[-0.58, DESK_TOP, -0.84]}
-        rotation={[0, 0.42, 0]}
-        size={[0.62, 0.42]}
-        seed={29}
         materials={materials}
       />
       <Props materials={materials} />
@@ -362,7 +372,7 @@ export default function DeskScene({ theme = "dark", tier = "high" }) {
       />
 
       {/* facing away from camera, towards the monitors */}
-      <group position={[0, FIGURE_Y, -0.12]} rotation={[0, Math.PI, 0]}>
+      <group position={[0, FIGURE_Y, -0.2]} rotation={[0, Math.PI, 0]}>
         <Figure ref={rig} tier={tier} />
       </group>
       </group>

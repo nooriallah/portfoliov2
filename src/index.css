@@ -7,7 +7,7 @@
 /* ---- Semantic color tokens (LIGHT is the default) ---- */
 :root {
   --bg: #ffffff; /* page background */
-  --section: #f8fafc; /* alternating section background */
+  --section: rgba(15, 23, 42, 0.03); /* alternating sections — translucent so the 3D backdrop shows through */
   --surface: #ffffff; /* card background */
   --surface-strong: #f8fafc; /* card hover */
   --card: #ffffff; /* solid surfaces (dropdowns) */

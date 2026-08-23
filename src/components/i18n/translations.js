@@ -17,7 +17,14 @@ export const translations = {
       reviews: "Reviews",
       contact: "Contact",
     },
-    ui: { hireMe: "Hire Me", downloadCv: "Download CV", viewWork: "View Work" },
+    ui: {
+      hireMe: "Hire Me",
+      downloadCv: "Download CV",
+      viewWork: "View Work",
+      prevPage: "Previous page",
+      nextPage: "Next page",
+      page: "Page",
+    },
     roles: ["Web Developer", "Programmer", "Front-End Engineer", "Freelancer"],
     hero: {
       greeting: "Hi, I'm",
@@ -212,6 +219,9 @@ export const translations = {
       hireMe: "همکاری با من",
       downloadCv: "دانلود سی‌وی",
       viewWork: "مشاهده کارها",
+      prevPage: "صفحه قبلی",
+      nextPage: "صفحه بعدی",
+      page: "صفحه",
     },
     roles: ["توسعه‌دهنده وب", "برنامه‌نویس", "مهندس فرانت‌اند", "فریلنسر"],
     hero: {
@@ -407,6 +417,9 @@ export const translations = {
       hireMe: "ما استخدام کړئ",
       downloadCv: "سي‌وي ډاونلوډ",
       viewWork: "کارونه وګورئ",
+      prevPage: "پخوانی مخ",
+      nextPage: "راتلونکی مخ",
+      page: "مخ",
     },
     roles: [
       "د ویب پراختیا کوونکی",
