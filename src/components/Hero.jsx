@@ -12,6 +12,12 @@ import { useLang } from "./i18n/LanguageProvider.jsx";
 // Marquee technologies — all taken from the real skills list in data/content.js
 const HIGHLIGHTS = ["React.js", "Laravel", "Tailwind CSS"];
 
+/**
+ * The 3D desk scene now occupies the hero's second column, so the portrait
+ * moved out (About still has one). Flip this to true to put the photo back.
+ */
+const SHOW_PORTRAIT = false;
+
 export default function Hero() {
   const { t } = useLang();
   const roles = t.roles;
@@ -84,8 +90,24 @@ export default function Hero() {
               </button>
             </div>
           </Reveal>
-          <Reveal delay={500}>
-            <div className="mt-8 flex gap-3">
+
+          {/* the technologies that used to float around the portrait */}
+          <Reveal delay={470}>
+            <div className="mt-7 flex flex-wrap items-center gap-2">
+              {HIGHLIGHTS.map((tech) => (
+                <span
+                  key={tech}
+                  className="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1.5 rounded-lg border border-line bg-card/60 backdrop-blur-md text-body"
+                >
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={540}>
+            <div className="mt-7 flex gap-3">
               {socials.map((s, i) => (
                 <a
                   key={i}
@@ -101,40 +123,42 @@ export default function Hero() {
           </Reveal>
         </div>
 
-        {/* Portrait — a genuine stack of planes, not a flat card */}
-        <div ref={portrait} className="flex justify-center">
-          <Reveal delay={300} from="scale">
-            <Tilt className="relative" max={9} scale={1.02} lift={16} perspective={1200}>
-              <div className="relative [transform-style:preserve-3d]">
-                <div
-                  className="absolute -inset-8 rounded-[2.5rem] bg-gradient-to-br from-blue-500 to-indigo-600 opacity-20 blur-2xl"
-                  style={{ transform: "translateZ(-60px)" }}
-                />
-                <div
-                  className="absolute inset-0 rounded-3xl border border-accent/35"
-                  style={{ transform: "translateZ(-24px) scale(1.07)" }}
-                />
-                <img
-                  src={IMG.hero}
-                  alt={t.hero.name}
-                  className="relative w-72 md:w-80 rounded-3xl border border-line object-cover shadow-2xl shadow-black/20"
-                />
-                {HIGHLIGHTS.map((tech, i) => (
-                  <span
-                    key={tech}
-                    className={`absolute text-[11px] font-semibold px-2.5 py-1.5 rounded-lg border border-line bg-card/85 backdrop-blur-md text-body shadow-lg ${
-                      ["-start-5 top-12", "-end-6 top-1/2", "-start-3 bottom-12"][i]
-                    }`}
-                    style={{ transform: `translateZ(${64 - i * 12}px)` }}
-                  >
-                    <span className="inline-block w-1.5 h-1.5 me-1.5 rounded-full bg-accent align-middle" />
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </Tilt>
-          </Reveal>
-        </div>
+        {/* Second column: either the portrait, or space held for the 3D set
+            so the copy never collides with it. */}
+        {SHOW_PORTRAIT ? (
+          <div ref={portrait} className="flex justify-center">
+            <Reveal delay={300} from="scale">
+              <Tilt
+                className="relative"
+                max={9}
+                scale={1.02}
+                lift={16}
+                perspective={1200}
+              >
+                <div className="relative [transform-style:preserve-3d]">
+                  <div
+                    className="absolute -inset-8 rounded-[2.5rem] bg-gradient-to-br from-blue-500 to-indigo-600 opacity-20 blur-2xl"
+                    style={{ transform: "translateZ(-60px)" }}
+                  />
+                  <div
+                    className="absolute inset-0 rounded-3xl border border-accent/35"
+                    style={{ transform: "translateZ(-24px) scale(1.07)" }}
+                  />
+                  <img
+                    src={IMG.hero}
+                    alt={t.hero.name}
+                    className="relative w-72 md:w-80 rounded-3xl border border-line object-cover shadow-2xl shadow-black/20"
+                  />
+                </div>
+              </Tilt>
+            </Reveal>
+          </div>
+        ) : (
+          <>
+            <div aria-hidden="true" className="hidden md:block min-h-[28rem]" />
+            <div aria-hidden="true" className="md:hidden h-[19rem]" />
+          </>
+        )}
       </div>
 
       {/* Scroll cue */}

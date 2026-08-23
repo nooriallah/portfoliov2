@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import usePointer, { pointer } from "../../hooks/usePointer.js";
+import DeskScene from "./character/DeskScene.jsx";
 
 /* ------------------------------------------------------------------ *
  * Palette — resolved per theme so the scene belongs to the page
@@ -192,137 +193,6 @@ function Terrain({ palette, tier }) {
 }
 
 /* ------------------------------------------------------------------ *
- * Core — a fresnel-lit shell inside a low-poly cage.
- * ------------------------------------------------------------------ */
-const FRESNEL_VERT = /* glsl */ `
-  varying vec3 vNormalV;
-  varying vec3 vViewDir;
-
-  void main() {
-    vec4 mv = modelViewMatrix * vec4(position, 1.0);
-    vNormalV = normalize(normalMatrix * normal);
-    vViewDir = normalize(-mv.xyz);
-    gl_Position = projectionMatrix * mv;
-  }
-`;
-
-const FRESNEL_FRAG = /* glsl */ `
-  uniform vec3  uColor;
-  uniform float uOpacity;
-  uniform float uPower;
-
-  varying vec3 vNormalV;
-  varying vec3 vViewDir;
-
-  void main() {
-    float f = pow(1.0 - clamp(dot(vNormalV, vViewDir), 0.0, 1.0), uPower);
-    gl_FragColor = vec4(uColor, f * uOpacity);
-    #include <colorspace_fragment>
-  }
-`;
-
-const CORE_Z = -1.4;
-const CAMERA_Z = 7;
-const CAMERA_FOV = 38;
-
-function Core({ palette, tier, flip }) {
-  const { size } = useThree();
-  const width = size.width;
-  const height = Math.max(size.height, 1);
-  const group = useRef(null);
-  const cage = useRef(null);
-  const halo = useRef(null);
-  const shell = useRef(null);
-
-  /* The core is a halo for the portrait, so it is sized and placed in screen
-     terms rather than world terms: work out how tall the frustum is at the
-     core's depth, then solve for the scale that lands on a target pixel
-     diameter. The composition then holds from a phone to a 4K display
-     instead of drifting with the aspect ratio. */
-  const wide = width >= 768; // matches the `md:` two-column breakpoint
-  const frustumH =
-    2 * (CAMERA_Z - CORE_Z) * Math.tan((CAMERA_FOV * Math.PI) / 360);
-  const frustumW = frustumH * (width / height);
-
-  const targetPx = wide ? 330 : 290;
-  const scale = (targetPx * frustumH) / (3 * height);
-  // In RTL the portrait swaps columns, so the core follows it.
-  const side = flip ? -1 : 1;
-  const home = wide
-    ? [side * (frustumW / 2) * 0.42, (frustumH / 2) * 0.06, CORE_Z]
-    : [0, -(frustumH / 2) * 0.58, CORE_Z];
-
-  const shellUniforms = useMemo(
-    () => ({
-      uColor: { value: new THREE.Color(palette.core) },
-      uOpacity: { value: palette.coreOpacity },
-      uPower: { value: 2.6 },
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
-
-  useEffect(() => {
-    const u = shell.current?.uniforms;
-    if (!u) return;
-    u.uColor.value.set(palette.core);
-    u.uOpacity.value = palette.coreOpacity;
-  }, [palette]);
-
-  useFrame((_, delta) => {
-    const d = Math.min(delta, 0.05);
-    const g = group.current;
-    if (g) {
-      g.rotation.y += d * 0.075;
-      g.rotation.x += d * 0.028;
-      // the whole core drifts a little with the cursor
-      g.position.x += (home[0] + pointer.x * 0.45 - g.position.x) * 0.03;
-      g.position.y += (home[1] - pointer.y * 0.3 - g.position.y) * 0.03;
-    }
-    if (cage.current) cage.current.rotation.y -= d * 0.16;
-    if (halo.current) halo.current.rotation.z += d * 0.05;
-  });
-
-  return (
-    <group ref={group} position={home} scale={scale}>
-      <mesh>
-        <icosahedronGeometry args={[1.5, tier === "high" ? 4 : 2]} />
-        <shaderMaterial
-          ref={shell}
-          uniforms={shellUniforms}
-          vertexShader={FRESNEL_VERT}
-          fragmentShader={FRESNEL_FRAG}
-          transparent
-          depthWrite={false}
-          blending={palette.blending}
-        />
-      </mesh>
-
-      <mesh ref={cage}>
-        <icosahedronGeometry args={[1.62, 1]} />
-        <meshBasicMaterial
-          color={palette.wire}
-          wireframe
-          transparent
-          opacity={palette.wireOpacity}
-          depthWrite={false}
-        />
-      </mesh>
-
-      <mesh ref={halo} rotation={[0.5, 0, 0.3]}>
-        <torusGeometry args={[wide ? 2.45 : 1.95, 0.006, 3, 96]} />
-        <meshBasicMaterial
-          color={palette.wire}
-          transparent
-          opacity={palette.wireOpacity * 1.6}
-          depthWrite={false}
-        />
-      </mesh>
-    </group>
-  );
-}
-
-/* ------------------------------------------------------------------ *
  * Rig — the camera leans towards the cursor. Small on purpose.
  * ------------------------------------------------------------------ */
 const ORIGIN = new THREE.Vector3(0, 0, 0);
@@ -335,6 +205,46 @@ function Rig() {
     cam.lookAt(ORIGIN);
   });
   return null;
+}
+
+/* ------------------------------------------------------------------ *
+ * Camera. Fixed, and shared by everything in the hero — the terrain needs a
+ * stable frustum, so scenes are framed by moving themselves, not the camera.
+ * ------------------------------------------------------------------ */
+const CAMERA_Z = 7;
+const CAMERA_FOV = 38;
+
+/* ------------------------------------------------------------------ *
+ * Desk set — the hero's subject. Framed in screen terms for the same
+ * reason the core was: solve for the scale that puts the set at a target
+ * pixel height, so the composition survives every viewport.
+ * ------------------------------------------------------------------ */
+const DESK_Z = -1.2;
+const SET_HEIGHT = 1.75; // world height of the desk scene
+const SET_CENTRE = 0.78; // its vertical centre of interest
+
+function DeskSet({ theme, tier, flip }) {
+  const { size } = useThree();
+  const width = size.width;
+  const height = Math.max(size.height, 1);
+
+  const wide = width >= 768;
+  const frustumH =
+    2 * (CAMERA_Z - DESK_Z) * Math.tan((CAMERA_FOV * Math.PI) / 360);
+  const frustumW = frustumH * (width / height);
+
+  const targetPx = wide ? 470 : 320;
+  const scale = (targetPx * frustumH) / (SET_HEIGHT * height);
+  const side = flip ? -1 : 1;
+
+  const slotY = wide ? -(frustumH / 2) * 0.08 : -(frustumH / 2) * 0.5;
+  const x = wide ? side * (frustumW / 2) * 0.4 : 0;
+
+  return (
+    <group position={[x, slotY - SET_CENTRE * scale, DESK_Z]} scale={scale}>
+      <DeskScene theme={theme} tier={tier} />
+    </group>
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -362,7 +272,7 @@ export default function HeroScene({
     >
       <Rig />
       <Terrain palette={palette} tier={tier} />
-      <Core palette={palette} tier={tier} flip={flip} />
+      <DeskSet theme={theme} tier={tier} flip={flip} />
     </Canvas>
   );
 }
