@@ -1,5 +1,17 @@
 export const projects = [
   {
+    title: "Simple Studio",
+    image: "img/portfo_pics/simplestudio.webp",
+    url: "https://simplestudio.af",
+    category: "laravel",
+  },
+  {
+    title: "Diara Sabz",
+    image: "img/portfo_pics/dsabz.webp",
+    url: "https://dsabz.simplestudio.af",
+    category: "laravel",
+  },
+  {
     title: "Double Coffee",
     image: "img/portfo_pics/dcoffee.jpg",
     url: "https://dcoffee.simplestudio.af",
